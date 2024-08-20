@@ -30,8 +30,11 @@ namespace Audiophiles_API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ContactId")
-                        .HasColumnType("int");
+                    //b.Property<int>("ContactId")
+                    //    .HasColumnType("int");
+
+                    b.Property<DateTime>("RespondAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Subject")
                         .IsRequired()
@@ -133,6 +136,9 @@ namespace Audiophiles_API.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("ContactAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()

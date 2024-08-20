@@ -1,4 +1,6 @@
-﻿namespace Audiophiles_API.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Audiophiles_API.Models
 {
     public class AdminRespond
     {
@@ -8,5 +10,6 @@
         public UserContact UserContact { get; set; } = null!;
         public string Title { get; set; } = null!;
         public string Subject { get; set; } = null!;
+        public DateTime RespondAt { get; set; }
     }
 }

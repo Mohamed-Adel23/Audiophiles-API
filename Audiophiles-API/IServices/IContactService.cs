@@ -7,6 +7,7 @@ namespace Audiophiles_API.IServices
     {
         Task<RespondDTO> UserContactAsync(UserContactModel model);
         Task<RespondDTO> AdminRespondAsync(AdminRespondModel model);
+        UserContact GetContactAsync(int id);
         List<UserContact> GetAllContactsAsync();
     }
 }

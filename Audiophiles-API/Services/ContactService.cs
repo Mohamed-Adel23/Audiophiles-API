@@ -25,7 +25,8 @@ namespace Audiophiles_API.Services
                 Email = model.Email,
                 Title = model.Title,
                 Subject = model.Subject,
-                Status = false
+                Status = false,
+                ContactAt = DateTime.Now
             };
 
             // Add New Contact To Database
@@ -67,7 +68,8 @@ namespace Audiophiles_API.Services
             {
                 UserContactId = model.UserContactId,
                 Title = model.Title,
-                Subject = model.Subject
+                Subject = model.Subject,
+                RespondAt = DateTime.Now
             };
             // Add To Database
             _context.AdminResponds.Add(newRespond);
@@ -85,6 +87,21 @@ namespace Audiophiles_API.Services
             result.Message = "Respond Sent Successfully!";
 
             return result;
+        }
+
+        public UserContact GetContactAsync(int id)
+        {
+            var contact = _context.UserContacts.Find(id);
+            if(contact is null)
+            {
+                return null!;
+            }
+            if(contact.Status)
+            {
+                return null!;
+            }
+
+            return contact;
         }
 
         public List<UserContact> GetAllContactsAsync()

@@ -48,13 +48,25 @@ namespace Audiophiles_API.Controllers
         }
 
         [Authorize(Roles = $"{RolesConstants.Admin}")]
+        [HttpGet("cont/{id:int}", Name = "getContact")]
+        public IActionResult GetContact(int id)
+        {
+            var result = _contactService.GetContactAsync(id);
+
+            if(result is null)
+                return NotFound(new { Message = "Something went wrong!" });
+
+            return Ok(result);
+        }
+
+        [Authorize(Roles = $"{RolesConstants.Admin}")]
         [HttpGet("all", Name = "allContacts")]
         public IActionResult AllContacts()
         {
             var result = _contactService.GetAllContactsAsync();
 
-            if(result.Count() <= 0)
-                return NotFound();
+            if (result.Count() <= 0)
+                return NotFound(new { Message = "Something went wrong!" });
 
             return Ok(result);
         }

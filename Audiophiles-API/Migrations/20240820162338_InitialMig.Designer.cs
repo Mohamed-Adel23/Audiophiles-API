@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Audiophiles_API.Migrations
 {
     [DbContext(typeof(AudioDbContext))]
-    [Migration("20240819214628_InitialMig")]
+    [Migration("20240820162338_InitialMig")]
     partial class InitialMig
     {
         /// <inheritdoc />
@@ -35,6 +35,9 @@ namespace Audiophiles_API.Migrations
 
                     b.Property<int>("ContactId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("RespondAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Subject")
                         .IsRequired()
@@ -136,6 +139,9 @@ namespace Audiophiles_API.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("ContactAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()
