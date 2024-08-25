@@ -1,8 +1,10 @@
 using Audiophiles_API.Data;
 using Audiophiles_API.Helpers;
 using Audiophiles_API.IServices;
+using Audiophiles_API.IServices.IFile;
 using Audiophiles_API.Models;
 using Audiophiles_API.Services;
+using Audiophiles_API.Services.File;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -57,6 +59,8 @@ namespace Audiophiles_API
             builder.Services.AddScoped<IAudioAuthService, AudioAuthService>();
             builder.Services.AddScoped<IEmailService, EmailService>();
             builder.Services.AddScoped<IContactService, ContactService>();
+            // Register FileService
+            builder.Services.AddScoped<IFileService, FileService>();
 
 
             builder.Services.AddControllers();
